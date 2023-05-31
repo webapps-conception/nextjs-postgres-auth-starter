@@ -27,6 +27,13 @@ npx create-next-app nextjs-typescript-starter --example "https://github.com/verc
 
 ## Getting Started
 
+Configurer le fichier .env.local:
+```bash
+cp .env.example .env.local
+```
+
+Sur le tableau de bord Vercel, recopier les variables d'environnement du projet ``nextjs-postgres-auth-starter``.
+
 First, run the development server:
 
 ```bash
@@ -37,6 +44,8 @@ yarn dev
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
+L'utilisateur et le mot de passe de connexion est identique à celui de production.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:
@@ -45,3 +54,11 @@ To learn more about Next.js, take a look at the following resources:
 - [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
+
+## Prisma CLI Installation
+
+```bash
+yarn add prisma --save-dev
+```
+
+- [Prisma CLI reference](https://www.prisma.io/docs/reference/api-reference/command-reference)
