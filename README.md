@@ -62,3 +62,44 @@ yarn add prisma --save-dev
 ```
 
 - [Prisma CLI reference](https://www.prisma.io/docs/reference/api-reference/command-reference)
+
+## Accès psql
+### Docker
+
+Démarrer un client psql sous docker:
+```bash
+docker pull postgres:latest
+docker run -it --rm --hostname pg postgres:latest bash
+```
+
+### Connexion en psql
+Sur le tableau de bord Vercel sous Storage et **nextjs-postgres-auth-st-postgres**, recopier la commande psql:
+
+```bash
+psql "postgres://default:XXXX@xxx.eu-central-1.postgres.vercel-storage.com:5432/verceldb"
+
+verceldb=> select * from public."User";
+ id |             email             |                           password                           
+----+-------------------------------+--------------------------------------------------------------
+  1 | contact@webapps-conception.fr | XXXX
+(1 row)
+
+verceldb=> \d "User"
+                              Table "public.User"
+  Column  |  Type   | Collation | Nullable |              Default               
+----------+---------+-----------+----------+------------------------------------
+ id       | integer |           | not null | nextval('"User_id_seq"'::regclass)
+ email    | text    |           | not null | 
+ password | text    |           | not null | 
+Indexes:
+    "User_pkey" PRIMARY KEY, btree (id)
+    "User_email_key" UNIQUE, btree (email)
+
+verceldb=> \q
+```
+
+### Export de la base de données
+
+```bash
+pg_dump "postgres://default:XXXX@xxx.eu-central-1.postgres.vercel-storage.com:5432/verceldb" > nextjs-typescript-starter.dump
+```
